@@ -36,10 +36,15 @@ EXPOSE 8989
 #Jackett
 RUN apt-get update \
 && apt-get install -qy libcurl4-openssl-dev bzip2 supervisor wget
+EXPOSE 9117
+
+#Subliminal
+RUN pip install -U subliminal && apt-get install -qy php5-cli php5-readline
+ADD postscript/ /postscript/ 
 
 #Supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
-EXPOSE 9117
+
 VOLUME /jackett
 VOLUME /media_data
 VOLUME /root/.config/Jackett
