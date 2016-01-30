@@ -42,3 +42,7 @@ COPY supervisord.conf /etc/supervisor/supervisord.conf
 EXPOSE 9117
 VOLUME /jackett
 VOLUME /media_data
+VOLUME /root/.config/Jackett
+VOLUME /config
+
+ENTRYPOINT ["/etc/service/sonarr/run"]
