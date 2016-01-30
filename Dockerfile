@@ -34,15 +34,11 @@ VOLUME /config
 EXPOSE 8989
 
 #Jackett
-WORKDIR /tmp
-
 RUN apt-get update \
-&& apt-get install -qy libcurl4-openssl-dev bzip2 supervisor wget \
-&& wget -q https://github.com/Jackett/Jackett/releases/download/$(wget -q https://github.com/Jackett/Jackett/releases/latest -O - | grep -E \/tag\/ | awk -F "[><]" '{print $3}')/Jackett.Binaries.Mono.tar.gz \
-&& tar -xvf Jackett* \
-&& mkdir -p /opt/jackett \
-&& mv Jackett/* /opt/jackett
+&& apt-get install -qy libcurl4-openssl-dev bzip2 supervisor wget
 
 #Supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 EXPOSE 9117
+VOLUME /jackett
+VOLUME /media_data
