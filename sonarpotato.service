@@ -1,0 +1,13 @@
+[Unit]
+Description=Sonarr potato container
+Requires=docker.service
+After=rtorrent.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+ExecStart=/usr/bin/docker start sonarpotato
+ExecStop=/usr/bin/docker stop -t 2 sonarpotato
+
+[Install]
+WantedBy=multi-user.target
