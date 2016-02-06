@@ -1,0 +1,8 @@
+description "Sonarpotato"
+author "azgal0r"
+start on filesystem and started docker
+stop on runlevel [!2345]
+respawn
+script
+  /usr/bin/docker start -a sonarpotato
+end script

@@ -41,6 +41,7 @@ EXPOSE 9117
 #Subliminal
 RUN pip install -U subliminal && apt-get install -qy php5-cli php5-readline
 ADD postscript/ /postscript/ 
+RUN chmod -R 755 /postscript
 
 #Supervisor
 COPY supervisord.conf /etc/supervisor/supervisord.conf
