@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:trusty
 MAINTAINER azgal0r
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	git-core \
